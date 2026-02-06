@@ -242,8 +242,7 @@
     <script src="../js/config.js"></script>
 
     <script>
-        // Use dynamic API URL from config.js with fallback
-        const API_URL = window.API_URL || 'https://divyanews.vercel.app/api';
+        // API URL is already set by config.js as window.API_URL
 
         const registerForm = document.getElementById('registerForm');
         const alertBox = document.getElementById('alert');
@@ -277,7 +276,7 @@
             setLoading(true);
 
             try {
-                const response = await fetch(`${API_URL}/auth/register`, {
+                const response = await fetch(`${window.API_URL}/auth/register`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
