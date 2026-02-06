@@ -238,9 +238,12 @@
         </div>
     </div>
 
+    <!-- Load API configuration -->
+    <script src="../js/config.js"></script>
+
     <script>
-        // API URL - Update this after deploying backend
-        const API_URL = 'http://localhost:5000/api';
+        // Use dynamic API URL from config.js with fallback
+        const API_URL = window.API_URL || 'https://divyanews.vercel.app/api';
 
         const registerForm = document.getElementById('registerForm');
         const alertBox = document.getElementById('alert');
