@@ -29,7 +29,31 @@
 
             const data = await response.json();
             newsData = data.news || data; // Handle both formats
-            renderAllSections();
+
+            // Check if we're on news.html page (has newsContainer)
+            const newsContainer = document.getElementById('newsContainer');
+            if (newsContainer) {
+                // Check URL parameters for category filter
+                const urlParams = new URLSearchParams(window.location.search);
+                const category = urlParams.get('category');
+
+                if (category) {
+                    // Set active filter button
+                    const filterBtn = document.querySelector(`[data-category="${category}"]`);
+                    if (filterBtn) {
+                        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                        filterBtn.classList.add('active');
+                    }
+                    // Render filtered news
+                    renderNewsPage(category);
+                } else {
+                    // Render all news
+                    renderNewsPage('all');
+                }
+            } else {
+                // Render sections for homepage
+                renderAllSections();
+            }
         } catch (error) {
             console.error('Error loading news:', error);
             // Fallback to news.json if API fails
