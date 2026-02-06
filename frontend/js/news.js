@@ -1,5 +1,5 @@
 // News Rendering System for Divya News
-// Handles loading and displaying news from news.json
+// Handles loading and displaying news from MongoDB API
 
 (function () {
     'use strict';
@@ -252,18 +252,8 @@
 
     // Initialize
     function init() {
-        loadNews();
         setupCategoryFilters();
-
-        // Check URL parameters for category filter
-        const urlParams = new URLSearchParams(window.location.search);
-        const category = urlParams.get('category');
-        if (category) {
-            const filterBtn = document.querySelector(`[data-category="${category}"]`);
-            if (filterBtn) {
-                filterBtn.click();
-            }
-        }
+        loadNews(); // Handles URL params after data loads
     }
 
     // Start when DOM is ready
