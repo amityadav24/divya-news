@@ -412,9 +412,14 @@
 
         // Logout function
         function logout() {
+            // Clear localStorage
             localStorage.removeItem('adminToken');
             localStorage.removeItem('adminInfo');
-            window.location.href = 'login.html';
+
+            // Small delay to ensure localStorage is cleared, then redirect with logout parameter
+            setTimeout(() => {
+                window.location.href = 'login.html?logout=true';
+            }, 100);
         }
 
         // Switch upload tab

@@ -317,6 +317,17 @@
 
         // Check if already logged in
         window.addEventListener('DOMContentLoaded', () => {
+            // Check if coming from logout
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromLogout = urlParams.get('logout') === 'true';
+
+            if (fromLogout) {
+                // Clear any existing tokens
+                localStorage.removeItem('adminToken');
+                localStorage.removeItem('adminInfo');
+                return; // Don't redirect
+            }
+
             const token = localStorage.getItem('adminToken');
             if (token) {
                 window.location.href = 'dashboard.html';
