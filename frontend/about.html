@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ne">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Divya News - Nepal's trusted news portal">
+    <title>About Us - Divya News</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mukta:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-left">
+                    <div class="date-time">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="current-date">Loading...</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17PP6CAA9P/" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@divyanews" target="_blank" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@divyanews99" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle Language">
+                    <i class="fas fa-language"></i>
+                    <span data-ne="English" data-en="नेपाली">English</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <div class="main-header">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo.png" alt="Divya News Logo">
+                    <div class="logo-text">
+                        <h1 data-ne="दिव्य न्यूज" data-en="DIVYA NEWS">दिव्य न्यूज</h1>
+                        <p data-ne="सत्यको साथ, जनताको आवाज" data-en="With Truth, Voice of the People">सत्यको साथ,
+                            जनताको आवाज</p>
+                    </div>
+                </a>
+
+                <nav>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="index.html" data-ne="गृहपृष्ठ" data-en="Home">गृहपृष्ठ</a></li>
+                        <li><a href="news.html" data-ne="ताजा समाचार" data-en="Latest News">ताजा समाचार</a></li>
+                        <li><a href="news.html?category=politics" data-ne="राजनीति" data-en="Politics">राजनीति</a></li>
+                        <li><a href="news.html?category=society" data-ne="समाज" data-en="Society">समाज</a></li>
+                        <li><a href="news.html?category=business" data-ne="व्यापार" data-en="Business">व्यापार</a></li>
+                        <li><a href="news.html?category=sports" data-ne="खेलकुद" data-en="Sports">खेलकुद</a></li>
+                        <li><a href="news.html?category=technology" data-ne="प्रविधि" data-en="Technology">प्रविधि</a>
+                        </li>
+                        <li><a href="about.html" class="active" data-ne="हाम्रो बारे" data-en="About Us">हाम्रो बारे</a>
+                        </li>
+                        <li><a href="contact.html" data-ne="सम्पर्क" data-en="Contact">सम्पर्क</a></li>
+                    </ul>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" style="background: var(--white);">
+        <div class="container">
+            <h1 class="section-title text-center mb-3" data-ne="हाम्रो बारे" data-en="About Us">हाम्रो बारे</h1>
+
+            <div class="about-section">
+                <div class="about-card">
+                    <h2 data-ne="हाम्रो दृष्टिकोण" data-en="Our Vision">हाम्रो दृष्टिकोण</h2>
+                    <p data-ne="दिव्य न्यूज नेपालको अग्रणी र विश्वसनीय समाचार स्रोत बन्ने हाम्रो दृष्टिकोण छ। हामी प्रामाणिक, निष्पक्ष र समयमै समाचार प्रदान गर्न प्रतिबद्ध छौं।"
+                        data-en="Divya News aims to be Nepal's leading and trusted news source. We are committed to providing authentic, unbiased, and timely news.">
+                        दिव्य न्यूज नेपालको अग्रणी र विश्वसनीय समाचार स्रोत बन्ने हाम्रो दृष्टिकोण छ। हामी प्रामाणिक,
+                        निष्पक्ष र समयमै समाचार प्रदान गर्न प्रतिबद्ध छौं।
+                    </p>
+                </div>
+
+                <div class="about-card">
+                    <h2 data-ne="हाम्रो मिशन" data-en="Our Mission">हाम्रो मिशन</h2>
+                    <p data-ne="हामी नेपाली जनतालाई राजनीति, समाज, व्यापार, खेलकुद र प्रविधिसम्बन्धी नवीनतम र प्रामाणिक समाचार प्रदान गर्दछौं। हाम्रो उद्देश्य सूचित र जागरूक समाज निर्माण गर्नु हो।"
+                        data-en="We provide the Nepali people with the latest and authentic news on politics, society, business, sports, and technology. Our goal is to build an informed and aware society.">
+                        हामी नेपाली जनतालाई राजनीति, समाज, व्यापार, खेलकुद र प्रविधिसम्बन्धी नवीनतम र प्रामाणिक समाचार
+                        प्रदान गर्दछौं। हाम्रो उद्देश्य सूचित र जागरूक समाज निर्माण गर्नु हो।
+                    </p>
+                </div>
+
+                <div class="about-card">
+                    <h2 data-ne="हाम्रा मूल्यहरू" data-en="Our Values">हाम्रा मूल्यहरू</h2>
+                    <ul>
+                        <li data-ne="✓ प्रामाणिकता र सत्यता" data-en="✓ Authenticity and Truth">✓ प्रामाणिकता र सत्यता
+                        </li>
+                        <li data-ne="✓ निष्पक्ष र सन्तुलित समाचार" data-en="✓ Unbiased and Balanced News">✓ निष्पक्ष र
+                            सन्तुलित समाचार</li>
+                        <li data-ne="✓ समयमै समाचार प्रदान" data-en="✓ Timely News Delivery">✓ समयमै समाचार प्रदान</li>
+                        <li data-ne="✓ पत्रकारिता नैतिकता" data-en="✓ Journalistic Ethics">✓ पत्रकारिता नैतिकता</li>
+                        <li data-ne="✓ जनताको विश्वास" data-en="✓ Public Trust">✓ जनताको विश्वास</li>
+                    </ul>
+                </div>
+
+                <div class="about-card">
+                    <h2 data-ne="हामीलाई सम्पर्क गर्नुहोस्" data-en="Contact Us">हामीलाई सम्पर्क गर्नुहोस्</h2>
+                    <p data-ne="तपाईंको सुझाव, प्रतिक्रिया वा समाचार टिप्स हामीलाई पठाउनुहोस्। हामी तपाईंको सहयोगको कदर गर्दछौं।"
+                        data-en="Send us your suggestions, feedback, or news tips. We appreciate your support.">
+                        तपाईंको सुझाव, प्रतिक्रिया वा समाचार टिप्स हामीलाई पठाउनुहोस्। हामी तपाईंको सहयोगको कदर गर्दछौं।
+                    </p>
+                    <div class="mt-2">
+                        <a href="contact.html" class="btn btn-primary" data-ne="सम्पर्क फारम"
+                            data-en="Contact Form">सम्पर्क फारम</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3 data-ne="दिव्य न्यूज" data-en="Divya News">दिव्य न्यूज</h3>
+                    <p data-ne="दिव्य न्यूज नेपालको विश्वसनीय समाचार स्रोत हो। हामी तपाईंलाई राजनीति, समाज, व्यापार, खेलकुद र प्रविधिसम्बन्धी नवीनतम र प्रामाणिक समाचार प्रदान गर्दछौं।"
+                        data-en="Divya News is Nepal's trusted news source. We provide you with the latest and authentic news on politics, society, business, sports, and technology.">
+                        दिव्य न्यूज नेपालको विश्वसनीय समाचार स्रोत हो। हामी तपाईंलाई राजनीति, समाज, व्यापार, खेलकुद र
+                        प्रविधिसम्बन्धी नवीनतम र प्रामाणिक समाचार प्रदान गर्दछौं।
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17PP6CAA9P/" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@divyanews" target="_blank" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@divyanews99" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-ne="द्रुत लिङ्कहरू" data-en="Quick Links">द्रुत लिङ्कहरू</h4>
+                    <div class="footer-links">
+                        <a href="index.html" data-ne="गृहपृष्ठ" data-en="Home">गृहपृष्ठ</a>
+                        <a href="news.html" data-ne="ताजा समाचार" data-en="Latest News">ताजा समाचार</a>
+                        <a href="about.html" data-ne="हाम्रो बारे" data-en="About Us">हाम्रो बारे</a>
+                        <a href="contact.html" data-ne="सम्पर्क" data-en="Contact">सम्पर्क</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-ne="समाचार श्रेणी" data-en="News Categories">समाचार श्रेणी</h4>
+                    <div class="footer-links">
+                        <a href="news.html?category=politics" data-ne="राजनीति" data-en="Politics">राजनीति</a>
+                        <a href="news.html?category=society" data-ne="समाज" data-en="Society">समाज</a>
+                        <a href="news.html?category=business" data-ne="व्यापार" data-en="Business">व्यापार</a>
+                        <a href="news.html?category=sports" data-ne="खेलकुद" data-en="Sports">खेलकुद</a>
+                        <a href="news.html?category=technology" data-ne="प्रविधि" data-en="Technology">प्रविधि</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-ne="सम्पर्क जानकारी" data-en="Contact Info">सम्पर्क जानकारी</h4>
+                    <div class="footer-links">
+                        <p><i class="fas fa-map-marker-alt"></i> <span data-ne="भैरहवा, नेपाल"
+                                data-en="Bhairahawa, Nepal">भैरहवा, नेपाल</span></p>
+                        <p><i class="fas fa-phone"></i> <span>+977-9713251903</span></p>
+                        <p><i class="fas fa-phone"></i> <span>+977-9713251957</span></p>
+                        <p><i class="fas fa-envelope"></i> <span>divyanews010@gmail.com</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 <span data-ne="दिव्य न्यूज - सत्यको साथ, जनताको आवाज। सर्वाधिकार सुरक्षित।"
+                        data-en="Divya News - With Truth, Voice of the People. All rights reserved.">दिव्य न्यूज -
+                        सत्यको साथ, जनताको आवाज। सर्वाधिकार सुरक्षित।</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/nepali-date.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

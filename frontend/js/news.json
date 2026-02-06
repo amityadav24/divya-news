@@ -1,0 +1,322 @@
+[
+  {
+    "id": "news001",
+    "title": {
+      "ne": "संसदमा नयाँ विधेयक पेश, राजनीतिक दलहरूबीच छलफल सुरु",
+      "en": "New Bill Presented in Parliament, Discussions Begin Among Political Parties"
+    },
+    "description": {
+      "ne": "आज संसदमा महत्वपूर्ण विधेयक पेश गरिएको छ। विभिन्न राजनीतिक दलहरूले यस विधेयकमा आफ्ना धारणा राखेका छन्। यो विधेयकले देशको विकासमा महत्वपूर्ण भूमिका खेल्ने अपेक्षा गरिएको छ।",
+      "en": "An important bill was presented in parliament today. Various political parties have expressed their views on this bill. This bill is expected to play a significant role in the country's development."
+    },
+    "category": "politics",
+    "image": "assets/images/news1.png",
+    "video": "",
+    "date": "2026-02-03",
+    "featured": true
+  },
+  {
+    "id": "news002",
+    "title": {
+      "ne": "काठमाडौंमा सांस्कृतिक महोत्सव सम्पन्न, हजारौं दर्शकको उपस्थिति",
+      "en": "Cultural Festival Concludes in Kathmandu, Thousands of Spectators Attend"
+    },
+    "description": {
+      "ne": "काठमाडौंमा तीन दिने सांस्कृतिक महोत्सव सफलतापूर्वक सम्पन्न भएको छ। यस महोत्सवमा विभिन्न जातजातिका परम्परागत नृत्य र संगीत प्रस्तुत गरिएको थियो। हजारौं दर्शकले यो कार्यक्रममा भाग लिएका थिए।",
+      "en": "A three-day cultural festival has been successfully concluded in Kathmandu. The festival featured traditional dances and music from various ethnic groups. Thousands of spectators participated in this event."
+    },
+    "category": "society",
+    "image": "assets/images/news2.png",
+    "video": "",
+    "date": "2026-02-02",
+    "featured": false
+  },
+  {
+    "id": "news003",
+    "title": {
+      "ne": "नेपाल राष्ट्र बैंकले नयाँ मौद्रिक नीति घोषणा गर्ने",
+      "en": "Nepal Rastra Bank to Announce New Monetary Policy"
+    },
+    "description": {
+      "ne": "नेपाल राष्ट्र बैंकले आगामी आर्थिक वर्षको लागि नयाँ मौद्रिक नीति घोषणा गर्ने तयारी गरेको छ। यस नीतिले देशको आर्थिक विकासमा महत्वपूर्ण प्रभाव पार्ने अपेक्षा गरिएको छ।",
+      "en": "Nepal Rastra Bank is preparing to announce a new monetary policy for the upcoming fiscal year. This policy is expected to have a significant impact on the country's economic development."
+    },
+    "category": "business",
+    "image": "assets/images/news3.png",
+    "video": "",
+    "date": "2026-02-01",
+    "featured": false
+  },
+  {
+    "id": "news004",
+    "title": {
+      "ne": "राष्ट्रिय फुटबल टोलीको नयाँ प्रशिक्षक नियुक्त",
+      "en": "New Coach Appointed for National Football Team"
+    },
+    "description": {
+      "ne": "नेपाली राष्ट्रिय फुटबल टोलीको लागि नयाँ प्रशिक्षक नियुक्त गरिएको छ। नयाँ प्रशिक्षकसँग टोलीको प्रदर्शनमा सुधार आउने अपेक्षा गरिएको छ। आगामी अन्तर्राष्ट्रिय प्रतियोगिताको तयारी सुरु भइसकेको छ।",
+      "en": "A new coach has been appointed for the Nepali national football team. The team's performance is expected to improve with the new coach. Preparations for the upcoming international competition have already begun."
+    },
+    "category": "sports",
+    "image": "assets/images/news4.png",
+    "video": "",
+    "date": "2026-01-31",
+    "featured": false
+  },
+  {
+    "id": "news005",
+    "title": {
+      "ne": "नेपालमा डिजिटल प्रविधिको प्रयोग बढ्दो, युवा उद्यमी अगाडि",
+      "en": "Digital Technology Usage Increasing in Nepal, Young Entrepreneurs Leading"
+    },
+    "description": {
+      "ne": "नेपालमा डिजिटल प्रविधिको प्रयोग तीव्र गतिमा बढिरहेको छ। युवा उद्यमीहरूले विभिन्न डिजिटल समाधान ल्याइरहेका छन्। यसले देशको आर्थिक विकासमा महत्वपूर्ण योगदान पुर्याउने अपेक्षा गरिएको छ।",
+      "en": "The use of digital technology is rapidly increasing in Nepal. Young entrepreneurs are bringing various digital solutions. This is expected to contribute significantly to the country's economic development."
+    },
+    "category": "technology",
+    "image": "assets/images/news5.png",
+    "video": "",
+    "date": "2026-01-30",
+    "featured": false
+  },
+  {
+    "id": "news006",
+    "title": {
+      "ne": "सरकारले नयाँ शिक्षा नीति कार्यान्वयन गर्ने",
+      "en": "Government to Implement New Education Policy"
+    },
+    "description": {
+      "ne": "सरकारले नयाँ शिक्षा नीति कार्यान्वयन गर्ने घोषणा गरेको छ। यस नीतिले शिक्षाको गुणस्तर सुधार गर्ने र विद्यार्थीहरूलाई थप अवसर प्रदान गर्ने उद्देश्य राखेको छ।",
+      "en": "The government has announced the implementation of a new education policy. This policy aims to improve the quality of education and provide more opportunities to students."
+    },
+    "category": "society",
+    "image": "assets/images/news2.png",
+    "video": "",
+    "date": "2026-01-29",
+    "featured": false
+  },
+  {
+    "id": "news007",
+    "title": {
+      "ne": "स्थानीय तहमा विकास आयोजना सुरु, जनताको उत्साह",
+      "en": "Development Projects Begin at Local Level, Public Enthusiasm"
+    },
+    "description": {
+      "ne": "विभिन्न स्थानीय तहमा विकास आयोजनाहरू सुरु भएका छन्। यी आयोजनाहरूले स्थानीय जनताको जीवनस्तरमा सुधार ल्याउने अपेक्षा गरिएको छ। जनताले यस पहलको स्वागत गरेका छन्।",
+      "en": "Development projects have begun at various local levels. These projects are expected to improve the living standards of local people. The public has welcomed this initiative."
+    },
+    "category": "politics",
+    "image": "assets/images/news1.png",
+    "video": "",
+    "date": "2026-01-28",
+    "featured": false
+  },
+  {
+    "id": "news008",
+    "title": {
+      "ne": "नेपाली क्रिकेट टोलीको उत्कृष्ट प्रदर्शन",
+      "en": "Excellent Performance by Nepali Cricket Team"
+    },
+    "description": {
+      "ne": "नेपाली क्रिकेट टोलीले हालैको अन्तर्राष्ट्रिय खेलमा उत्कृष्ट प्रदर्शन गरेको छ। टोलीका खेलाडीहरूले राम्रो खेल प्रदर्शन गरी देशको नाम चम्काएका छन्।",
+      "en": "The Nepali cricket team has performed excellently in the recent international match. The team's players have showcased good gameplay and brought pride to the nation."
+    },
+    "category": "sports",
+    "image": "assets/images/news4.png",
+    "video": "",
+    "date": "2026-01-27",
+    "featured": false
+  },
+  {
+    "id": "news009",
+    "title": {
+      "ne": "प्रधानमन्त्रीद्वारा नयाँ आर्थिक सुधार कार्यक्रम घोषणा",
+      "en": "Prime Minister Announces New Economic Reform Program"
+    },
+    "description": {
+      "ne": "प्रधानमन्त्रीले देशको आर्थिक विकासका लागि नयाँ सुधार कार्यक्रम घोषणा गर्नुभएको छ। यस कार्यक्रमले रोजगारी सृजना र लगानी बढाउने लक्ष्य राखेको छ। विभिन्न क्षेत्रमा सुधारका योजनाहरू समावेश गरिएको छ।",
+      "en": "The Prime Minister has announced a new reform program for the country's economic development. This program aims to create employment and increase investment. Plans for improvements in various sectors have been included."
+    },
+    "category": "politics",
+    "image": "assets/images/news1.png",
+    "video": "",
+    "date": "2026-01-26",
+    "featured": false
+  },
+  {
+    "id": "news010",
+    "title": {
+      "ne": "हिमालय संरक्षण अभियान सुरु, पर्यावरणविद्हरूको सहभागिता",
+      "en": "Himalayan Conservation Campaign Begins, Environmentalists Participate"
+    },
+    "description": {
+      "ne": "हिमालय क्षेत्रको संरक्षणका लागि नयाँ अभियान सुरु भएको छ। पर्यावरणविद्हरू र स्थानीय समुदायले यस अभियानमा सक्रिय सहभागिता जनाएका छन्। जलवायु परिवर्तनको प्रभाव कम गर्न विभिन्न कार्यक्रमहरू सञ्चालन गरिनेछ।",
+      "en": "A new campaign for the conservation of the Himalayan region has begun. Environmentalists and local communities have actively participated in this campaign. Various programs will be conducted to reduce the impact of climate change."
+    },
+    "category": "society",
+    "image": "assets/images/news2.png",
+    "video": "",
+    "date": "2026-01-25",
+    "featured": false
+  },
+  {
+    "id": "news011",
+    "title": {
+      "ne": "शेयर बजारमा सकारात्मक वृद्धि, लगानीकर्ताहरू उत्साहित",
+      "en": "Positive Growth in Stock Market, Investors Enthusiastic"
+    },
+    "description": {
+      "ne": "नेपाल स्टक एक्सचेन्जमा शेयर बजारमा सकारात्मक वृद्धि देखिएको छ। प्रमुख कम्पनीहरूको शेयर मूल्यमा बृद्धि भएको छ। लगानीकर्ताहरू यस सकारात्मक प्रवृत्तिबाट उत्साहित छन्। विश्लेषकहरूले यो प्रवृत्ति निरन्तर रहने अनुमान गरेका छन्।",
+      "en": "Positive growth has been observed in the stock market at Nepal Stock Exchange. Share prices of major companies have increased. Investors are enthusiastic about this positive trend. Analysts predict this trend will continue."
+    },
+    "category": "business",
+    "image": "assets/images/news3.png",
+    "video": "",
+    "date": "2026-01-24",
+    "featured": false
+  },
+  {
+    "id": "news012",
+    "title": {
+      "ne": "राष्ट्रिय भलिबल प्रतियोगिता सुरु, १२ टोलीको सहभागिता",
+      "en": "National Volleyball Competition Begins, 12 Teams Participate"
+    },
+    "description": {
+      "ne": "राष्ट्रिय भलिबल प्रतियोगिता काठमाडौंमा सुरु भएको छ। देशभरिबाट १२ टोलीले यस प्रतियोगितामा भाग लिइरहेका छन्। खेलाडीहरूले उत्कृष्ट प्रदर्शन गरिरहेका छन्। फाइनल खेल आगामी हप्ता हुनेछ।",
+      "en": "The National Volleyball Competition has begun in Kathmandu. 12 teams from across the country are participating in this competition. Players are performing excellently. The final match will be held next week."
+    },
+    "category": "sports",
+    "image": "assets/images/news4.png",
+    "video": "",
+    "date": "2026-01-23",
+    "featured": false
+  },
+  {
+    "id": "news013",
+    "title": {
+      "ne": "५जी सेवा नेपालमा सुरु हुने, दूरसञ्चार कम्पनीको घोषणा",
+      "en": "5G Service to Launch in Nepal, Telecom Company Announces"
+    },
+    "description": {
+      "ne": "नेपालमा ५जी सेवा सुरु हुने भएको छ। प्रमुख दूरसञ्चार कम्पनीले यस सेवाको परीक्षण सफलतापूर्वक सम्पन्न गरेको छ। यस सेवाले इन्टरनेटको गति र गुणस्तरमा उल्लेखनीय सुधार ल्याउनेछ। प्रारम्भमा काठमाडौं उपत्यकामा यो सेवा उपलब्ध हुनेछ।",
+      "en": "5G service is set to launch in Nepal. A major telecom company has successfully completed testing of this service. This service will bring significant improvements in internet speed and quality. Initially, this service will be available in Kathmandu Valley."
+    },
+    "category": "technology",
+    "image": "assets/images/news5.png",
+    "video": "",
+    "date": "2026-01-22",
+    "featured": false
+  },
+  {
+    "id": "news014",
+    "title": {
+      "ne": "विपक्षी दलहरूद्वारा संसदमा विरोध प्रदर्शन",
+      "en": "Opposition Parties Stage Protest in Parliament"
+    },
+    "description": {
+      "ne": "विपक्षी राजनीतिक दलहरूले संसदमा विरोध प्रदर्शन गरेका छन्। विभिन्न मुद्दाहरूमा सरकारको ध्यानाकर्षण गराउन यो विरोध गरिएको हो। संसद बैठक केही समयका लागि स्थगित गरिएको छ। दलहरूबीच वार्ता जारी छ।",
+      "en": "Opposition political parties have staged a protest in parliament. This protest was held to draw the government's attention to various issues. The parliamentary session has been adjourned for some time. Talks between parties are ongoing."
+    },
+    "category": "politics",
+    "image": "assets/images/news1.png",
+    "video": "",
+    "date": "2026-01-21",
+    "featured": false
+  },
+  {
+    "id": "news015",
+    "title": {
+      "ne": "ग्रामीण क्षेत्रमा स्वास्थ्य शिविर सञ्चालन, सयौं बिरामीको उपचार",
+      "en": "Health Camp Conducted in Rural Areas, Hundreds of Patients Treated"
+    },
+    "description": {
+      "ne": "ग्रामीण क्षेत्रमा निःशुल्क स्वास्थ्य शिविर सञ्चालन गरिएको छ। चिकित्सकहरूको टोलीले सयौं बिरामीको उपचार गरेको छ। औषधि र स्वास्थ्य परामर्श निःशुल्क प्रदान गरिएको छ। स्थानीय जनताले यस पहलको स्वागत गरेका छन्।",
+      "en": "A free health camp has been conducted in rural areas. A team of doctors has treated hundreds of patients. Medicine and health consultation were provided free of charge. Local people have welcomed this initiative."
+    },
+    "category": "society",
+    "image": "assets/images/news2.png",
+    "video": "",
+    "date": "2026-01-20",
+    "featured": false
+  },
+  {
+    "id": "news016",
+    "title": {
+      "ne": "नयाँ उद्योग स्थापना, रोजगारीका अवसर सृजना",
+      "en": "New Industry Established, Employment Opportunities Created"
+    },
+    "description": {
+      "ne": "देशमा नयाँ उद्योग स्थापना भएको छ। यस उद्योगले हजारौं युवाहरूलाई रोजगारीको अवसर प्रदान गर्नेछ। स्थानीय उत्पादनमा वृद्धि हुने अपेक्षा गरिएको छ। सरकारले यस्ता उद्योगहरूलाई प्रोत्साहन गर्ने नीति लिएको छ।",
+      "en": "A new industry has been established in the country. This industry will provide employment opportunities to thousands of youth. Local production is expected to increase. The government has adopted a policy to encourage such industries."
+    },
+    "category": "business",
+    "image": "assets/images/news3.png",
+    "video": "",
+    "date": "2026-01-19",
+    "featured": false
+  },
+  {
+    "id": "news017",
+    "title": {
+      "ne": "महिला फुटबल टोलीको ऐतिहासिक जित",
+      "en": "Historic Victory for Women's Football Team"
+    },
+    "description": {
+      "ne": "नेपाली महिला फुटबल टोलीले ऐतिहासिक जित हासिल गरेको छ। अन्तर्राष्ट्रिय प्रतियोगितामा टोलीले उत्कृष्ट प्रदर्शन गरेको छ। खेलाडीहरूको कडा परिश्रम र समर्पणले यो सफलता दिलाएको छ। देशभर उत्सवको माहोल छ।",
+      "en": "The Nepali women's football team has achieved a historic victory. The team has performed excellently in the international competition. The hard work and dedication of the players have brought this success. There is a celebratory atmosphere across the country."
+    },
+    "category": "sports",
+    "image": "assets/images/news4.png",
+    "video": "",
+    "date": "2026-01-18",
+    "featured": false
+  },
+  {
+    "id": "news018",
+    "title": {
+      "ne": "कृत्रिम बुद्धिमत्ता प्रविधिमा नेपाली युवाहरूको योगदान",
+      "en": "Contribution of Nepali Youth in Artificial Intelligence Technology"
+    },
+    "description": {
+      "ne": "कृत्रिम बुद्धिमत्ता प्रविधिमा नेपाली युवाहरूले उल्लेखनीय योगदान दिइरहेका छन्। विभिन्न अन्तर्राष्ट्रिय परियोजनाहरूमा नेपाली विशेषज्ञहरूको सहभागिता बढेको छ। यसले देशको प्राविधिक क्षेत्रमा सकारात्मक सन्देश दिएको छ।",
+      "en": "Nepali youth are making significant contributions to artificial intelligence technology. The participation of Nepali experts in various international projects has increased. This has sent a positive message to the country's technical sector."
+    },
+    "category": "technology",
+    "image": "assets/images/news5.png",
+    "video": "",
+    "date": "2026-01-17",
+    "featured": false
+  },
+  {
+    "id": "news019",
+    "title": {
+      "ne": "संविधान संशोधन प्रस्ताव संसदमा पेश",
+      "en": "Constitutional Amendment Proposal Presented in Parliament"
+    },
+    "description": {
+      "ne": "संविधान संशोधन प्रस्ताव संसदमा पेश गरिएको छ। यस प्रस्तावमा विभिन्न महत्वपूर्ण विषयहरू समावेश गरिएको छ। राजनीतिक दलहरूबीच यसमा छलफल भइरहेको छ। संविधानविद्हरूले यस प्रस्तावको विश्लेषण गरिरहेका छन्।",
+      "en": "A constitutional amendment proposal has been presented in parliament. This proposal includes various important topics. Discussions are ongoing among political parties. Constitutional experts are analyzing this proposal."
+    },
+    "category": "politics",
+    "image": "assets/images/news1.png",
+    "video": "",
+    "date": "2026-01-16",
+    "featured": false
+  },
+  {
+    "id": "news020",
+    "title": {
+      "ne": "पर्यटन क्षेत्रमा सुधार, विदेशी पर्यटकको आगमन बढ्दो",
+      "en": "Improvement in Tourism Sector, Foreign Tourist Arrivals Increasing"
+    },
+    "description": {
+      "ne": "पर्यटन क्षेत्रमा सकारात्मक सुधार देखिएको छ। विदेशी पर्यटकको आगमनमा उल्लेखनीय वृद्धि भएको छ। पर्यटन प्रवर्द्धनका लागि विभिन्न कार्यक्रमहरू सञ्चालन गरिएको छ। यसले देशको अर्थतन्त्रमा सकारात्मक प्रभाव पारेको छ।",
+      "en": "Positive improvements have been observed in the tourism sector. There has been a significant increase in foreign tourist arrivals. Various programs have been conducted for tourism promotion. This has had a positive impact on the country's economy."
+    },
+    "category": "business",
+    "image": "assets/images/news3.png",
+    "video": "",
+    "date": "2026-01-15",
+    "featured": false
+  }
+]

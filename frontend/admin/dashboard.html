@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Divya News</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .admin-header {
+            background: linear-gradient(135deg, #1E3A8A 0%, #DC143C 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content h1 {
+            font-size: 1.5rem;
+        }
+
+        .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-logout {
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* News Form */
+        .news-form-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .form-title {
+            color: #1E3A8A;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1E3A8A;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #DC143C;
+            box-shadow: 0 0 0 4px rgba(220, 20, 60, 0.1);
+        }
+
+        .upload-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .upload-tab {
+            padding: 0.5rem 1rem;
+            background: #f3f4f6;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-tab.active {
+            background: linear-gradient(135deg, #1E3A8A 0%, #3b82f6 100%);
+            color: white;
+            border-color: #1E3A8A;
+        }
+
+        .upload-content {
+            display: none;
+        }
+
+        .upload-content.active {
+            display: block;
+        }
+
+        .btn-publish {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #DC143C 0%, #B8112E 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-publish:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+        }
+
+        .btn-publish:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            margin-top: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .image-preview.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="admin-header">
+        <div class="header-content">
+            <h1><i class="fas fa-newspaper"></i> Divya News - Admin Dashboard</h1>
+            <div class="admin-info">
+                <span id="adminUsername">Admin</span>
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="news-form-card">
+            <h2 class="form-title">
+                <i class="fas fa-plus-circle"></i> Publish New News
+            </h2>
+
+            <div id="alert" class="alert"></div>
+
+            <form id="newsForm">
+                <div class="form-grid">
+                    <!-- Nepali Title -->
+                    <div class="form-group">
+                        <label for="titleNe">Title (Nepali) *</label>
+                        <input type="text" id="titleNe" required>
+                    </div>
+
+                    <!-- English Title -->
+                    <div class="form-group">
+                        <label for="titleEn">Title (English) *</label>
+                        <input type="text" id="titleEn" required>
+                    </div>
+
+                    <!-- Nepali Description -->
+                    <div class="form-group full-width">
+                        <label for="descriptionNe">Description (Nepali) *</label>
+                        <textarea id="descriptionNe" required></textarea>
+                    </div>
+
+                    <!-- English Description -->
+                    <div class="form-group full-width">
+                        <label for="descriptionEn">Description (English) *</label>
+                        <textarea id="descriptionEn" required></textarea>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="politics">Politics / राजनीति</option>
+                            <option value="society">Society / समाज</option>
+                            <option value="business">Business / व्यापार</option>
+                            <option value="sports">Sports / खेलकुद</option>
+                            <option value="technology">Technology / प्रविधि</option>
+                        </select>
+                    </div>
+
+                    <!-- Featured -->
+                    <div class="form-group">
+                        <label for="featured">Featured News</label>
+                        <select id="featured">
+                            <option value="false">No</option>
+                            <option value="true">Yes</option>
+                        </select>
+                    </div>
+
+                    <!-- Image Upload Options -->
+                    <div class="form-group full-width">
+                        <label>Image Upload Method *</label>
+                        <div class="upload-options">
+                            <div class="upload-tab active" onclick="switchUploadTab('file')">
+                                <i class="fas fa-upload"></i> File Upload
+                            </div>
+                            <div class="upload-tab" onclick="switchUploadTab('url')">
+                                <i class="fas fa-link"></i> Image URL
+                            </div>
+                            <div class="upload-tab" onclick="switchUploadTab('cloudinary')">
+                                <i class="fas fa-cloud"></i> Cloudinary URL
+                            </div>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div id="upload-file" class="upload-content active">
+                            <input type="file" id="imageFile" accept="image/*">
+                            <img id="imagePreview" class="image-preview" alt="Preview">
+                        </div>
+
+                        <!-- URL Input -->
+                        <div id="upload-url" class="upload-content">
+                            <input type="url" id="imageUrl" placeholder="https://example.com/image.jpg">
+                        </div>
+
+                        <!-- Cloudinary URL -->
+                        <div id="upload-cloudinary" class="upload-content">
+                            <input type="url" id="cloudinaryUrl" placeholder="https://res.cloudinary.com/...">
+                        </div>
+                    </div>
+
+                    <!-- Video Upload (Optional) -->
+                    <div class="form-group">
+                        <label for="videoUrl">Video URL (Optional)</label>
+                        <input type="url" id="videoUrl" placeholder="https://example.com/video.mp4">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-publish" id="publishBtn">
+                    <span id="btnText"><i class="fas fa-paper-plane"></i> Publish News</span>
+                    <span id="btnLoading" class="loading" style="display: none;"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script>
+        // API URL from config
+        const API_URL = window.API_URL || 'http://localhost:5000/api';
+        let token = localStorage.getItem('adminToken');
+        let currentUploadMethod = 'file';
+
+        // Check authentication
+        if (!token) {
+            window.location.href = 'login.html';
+        }
+
+        // Load admin info
+        async function loadAdminInfo() {
+            try {
+                const response = await fetch(`${API_URL}/auth/me`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Unauthorized');
+                }
+
+                const data = await response.json();
+                document.getElementById('adminUsername').textContent = data.admin.username;
+            } catch (error) {
+                console.error('Auth error:', error);
+                logout();
+            }
+        }
+
+        loadAdminInfo();
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('adminToken');
+            localStorage.removeItem('adminInfo');
+            window.location.href = 'login.html';
+        }
+
+        // Switch upload tab
+        function switchUploadTab(method) {
+            currentUploadMethod = method;
+
+            // Update tabs
+            document.querySelectorAll('.upload-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.closest('.upload-tab').classList.add('active');
+
+            // Update content
+            document.querySelectorAll('.upload-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(`upload-${method}`).classList.add('active');
+        }
+
+        // Alert functions
+        function showAlert(message, type = 'success') {
+            const alertBox = document.getElementById('alert');
+            alertBox.textContent = message;
+            alertBox.className = `alert alert-${type} show`;
+            setTimeout(() => {
+                alertBox.classList.remove('show');
+            }, 5000);
+        }
+
+        // Image preview
+        document.getElementById('imageFile').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const preview = document.getElementById('imagePreview');
+                    preview.src = e.target.result;
+                    preview.classList.add('show');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Form submission
+        document.getElementById('newsForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const publishBtn = document.getElementById('publishBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoading = document.getElementById('btnLoading');
+
+            publishBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline-block';
+
+            try {
+                let imageUrl = '';
+
+                // Handle different upload methods
+                if (currentUploadMethod === 'file') {
+                    const imageFile = document.getElementById('imageFile').files[0];
+                    if (!imageFile) {
+                        throw new Error('Please select an image file');
+                    }
+
+                    const formData = new FormData();
+                    formData.append('image', imageFile);
+
+                    const imageResponse = await fetch(`${API_URL}/upload/image`, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: formData
+                    });
+
+                    if (!imageResponse.ok) throw new Error('Image upload failed');
+                    const imageData = await imageResponse.json();
+                    imageUrl = imageData.url;
+                } else if (currentUploadMethod === 'url') {
+                    imageUrl = document.getElementById('imageUrl').value;
+                    if (!imageUrl) throw new Error('Please enter image URL');
+                } else if (currentUploadMethod === 'cloudinary') {
+                    imageUrl = document.getElementById('cloudinaryUrl').value;
+                    if (!imageUrl) throw new Error('Please enter Cloudinary URL');
+                }
+
+                // Get video URL
+                const videoUrl = document.getElementById('videoUrl').value || '';
+
+                // Publish news
+                const newsData = {
+                    title: {
+                        ne: document.getElementById('titleNe').value,
+                        en: document.getElementById('titleEn').value
+                    },
+                    description: {
+                        ne: document.getElementById('descriptionNe').value,
+                        en: document.getElementById('descriptionEn').value
+                    },
+                    category: document.getElementById('category').value,
+                    image: imageUrl,
+                    video: videoUrl,
+                    featured: document.getElementById('featured').value === 'true'
+                };
+
+                const response = await fetch(`${API_URL}/news`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(newsData)
+                });
+
+                if (!response.ok) throw new Error('Publishing failed');
+
+                showAlert('✅ News published successfully!', 'success');
+                document.getElementById('newsForm').reset();
+                document.getElementById('imagePreview').classList.remove('show');
+
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('❌ ' + (error.message || 'Failed to publish news'), 'error');
+            } finally {
+                publishBtn.disabled = false;
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

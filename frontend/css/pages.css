@@ -1,0 +1,128 @@
+/* ========== About Page Styles ========== */
+.about-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-card {
+    background: var(--gradient-card);
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+}
+
+.about-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.about-card h2 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.about-card p,
+.about-card ul {
+    line-height: 1.8;
+    color: var(--dark-gray);
+}
+
+.about-card ul {
+    padding-left: 1.5rem;
+    line-height: 2;
+}
+
+/* ========== Contact Page Styles ========== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-info-box {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.contact-info-box h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+}
+
+.contact-detail {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.contact-detail i {
+    color: var(--primary-red);
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+}
+
+.contact-detail h4 {
+    margin-bottom: 0.5rem;
+}
+
+.contact-detail p {
+    color: var(--medium-gray);
+}
+
+.contact-social-section {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+}
+
+.contact-social-section h4 {
+    margin-bottom: 1rem;
+}
+
+.contact-working-hours {
+    background: var(--gradient-blue);
+    color: var(--white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+}
+
+.contact-working-hours h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.contact-working-hours p {
+    opacity: 0.95;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-working-hours p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========== News Page Styles ========== */
+.page-header {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.news-filters-section {
+    padding-top: 0;
+}
+
+/* ========== Responsive Adjustments ========== */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
