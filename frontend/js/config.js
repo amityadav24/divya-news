@@ -11,7 +11,7 @@ const API_CONFIG = {
     // Replace 'YOUR-BACKEND-URL' with your actual Vercel backend URL
     // Example: 'https://divya-news-api.vercel.app/api'
     production: {
-        baseURL: 'https://YOUR-BACKEND-URL.vercel.app/api'
+        baseURL: 'https://divyanews.vercel.app/api'
     }
 };
 
