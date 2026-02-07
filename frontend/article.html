@@ -108,13 +108,18 @@
             overflow: hidden;
             margin-bottom: 1rem;
             cursor: pointer;
+            background: var(--dark-gray);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .main-image {
             width: 100%;
             height: auto;
             max-height: 600px;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
         }
 
@@ -322,11 +327,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: var(--spacing-lg);
-        }
-
-        /* Override category badge to use solid red instead of gradient */
-        .related-news .category-badge {
-            background: #DC143C !important;
+            padding: 0 1rem;
         }
 
         @media (max-width: 768px) {
