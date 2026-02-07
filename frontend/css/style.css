@@ -501,6 +501,15 @@ button {
   transform: scale(1.1);
 }
 
+.news-image .category-badge,
+.news-card-image .category-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  margin-bottom: 0;
+}
+
 .news-content,
 .news-card-content {
   padding: 1.25rem;
