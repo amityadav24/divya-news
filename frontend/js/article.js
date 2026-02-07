@@ -232,15 +232,33 @@
             const description = item.description[currentLang];
             const category = categoryTranslations[item.category][currentLang];
 
+            // Format date using B.S. format
+            const date = new Date(item.createdAt);
+            let formattedDate = '';
+            if (window.NepaliDateConverter) {
+                formattedDate = currentLang === 'ne'
+                    ? window.NepaliDateConverter.formatBsDateNepali(date)
+                    : window.NepaliDateConverter.formatBsDateEnglish(date);
+            } else {
+                formattedDate = date.toLocaleDateString(currentLang === 'ne' ? 'ne-NP' : 'en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            }
+
             return `
                 <a href="article.html?id=${item._id}" class="news-card">
                     <div class="news-card-image">
-                        <img src="${image}" alt="${title}" loading="lazy">
+                        <img src="${image}" alt="${title}" loading="lazy" class="news-card-main-image">
                         <span class="category-badge">${category}</span>
                     </div>
                     <div class="news-card-content">
                         <h3>${title}</h3>
-                        <p>${description.substring(0, 100)}...</p>
+                        <p>${description.substring(0, 120)}...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> ${formattedDate}</span>
+                        </div>
                     </div>
                 </a>
             `;
