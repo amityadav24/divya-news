@@ -119,19 +119,20 @@
         }
 
         return `
-            <div class="news-card">
-                <div class="news-card-image">
+            <a href="article.html?id=${news._id}" class="news-card">
+                <div class="news-image">
                     <img src="${news.image}" alt="${title}" loading="lazy">
-                </div>
-                <div class="news-card-content">
                     <span class="category-badge">${category}</span>
+                </div>
+                <div class="news-content">
                     <h3>${title}</h3>
                     <p>${description.substring(0, 150)}...</p>
                     <div class="news-meta">
                         <span><i class="fas fa-clock"></i> ${date}</span>
+                        <span><i class="fas fa-eye"></i> ${news.views || 0}</span>
                     </div>
                 </div>
-            </div>
+            </a>
         `;
     }
 

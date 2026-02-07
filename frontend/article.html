@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ne">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read full article - Divya News">
+    <meta name="keywords" content="Nepal news, Nepali news, breaking news">
+
+    <!-- Dynamic Open Graph Meta Tags (will be set by JavaScript) -->
+    <meta property="og:title" content="Divya News">
+    <meta property="og:description" content="सत्यको साथ, जनताको आवाज">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <title>Article - Divya News</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mukta:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+
+    <style>
+        .article-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .breadcrumb a {
+            color: #1E3A8A;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: #1a1a1a;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1rem 0;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            color: #666;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-badge {
+            background: linear-gradient(135deg, #1E3A8A, #DC143C);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            margin: 2rem 0;
+        }
+
+        .main-image-container {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-counter {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .thumbnail-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .thumbnail {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            border-color: #1E3A8A;
+            transform: scale(1.05);
+        }
+
+        .thumbnail.active {
+            border-color: #DC143C;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-prev {
+            left: 2rem;
+        }
+
+        .lightbox-next {
+            right: 2rem;
+        }
+
+        /* Article Content */
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            margin: 2rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Social Share */
+        .share-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f9fafb;
+            border-radius: 12px;
+        }
+
+        .share-section h3 {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .share-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .share-facebook {
+            background: #1877f2;
+            color: white;
+        }
+
+        .share-twitter {
+            background: #1da1f2;
+            color: white;
+        }
+
+        .share-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .share-copy {
+            background: #6b7280;
+            color: white;
+        }
+
+        /* Related News */
+        .related-news {
+            margin: 3rem 0;
+        }
+
+        .related-news h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .article-meta {
+                font-size: 0.85rem;
+            }
+
+            .thumbnail-strip {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+
+            .lightbox-nav,
+            .lightbox-close {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .lightbox-prev {
+                left: 1rem;
+            }
+
+            .lightbox-next {
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header (same as index.html) -->
+    <header class="header">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-left">
+                    <div class="date-time">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="current-date">Loading...</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17PP6CAA9P/" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@divyanews" target="_blank" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@divyanews99" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle Language">
+                    <i class="fas fa-language"></i>
+                    <span data-ne="English" data-en="नेपाली">English</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <div class="main-header">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo.png" alt="Divya News Logo">
+                    <div class="logo-text">
+                        <h1 data-ne="दिव्य न्यूज" data-en="DIVYA NEWS">दिव्य न्यूज</h1>
+                        <p data-ne="सत्यको साथ, जनताको आवाज" data-en="With Truth, Voice of the People">सत्यको साथ,
+                            जनताको आवाज</p>
+                    </div>
+                </a>
+
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" data-ne="गृहपृष्ठ" data-en="Home">गृहपृष्ठ</a></li>
+                        <li><a href="news.html" data-ne="समाचार" data-en="News">समाचार</a></li>
+                        <li><a href="about.html" data-ne="हाम्रो बारेमा" data-en="About">हाम्रो बारेमा</a></li>
+                        <li><a href="contact.html" data-ne="सम्पर्क" data-en="Contact">सम्पर्क</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Breaking News Ticker -->
+        <div class="breaking-news" id="breakingNews">
+            <div class="breaking-label">
+                <i class="fas fa-bolt"></i>
+                <span data-ne="ब्रेकिङ न्यूज" data-en="Breaking News">ब्रेकिङ न्यूज</span>
+            </div>
+            <div class="breaking-content">
+                <span id="breakingText">Loading...</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Container -->
+    <div class="article-container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" id="breadcrumb">
+            <a href="index.html" data-ne="गृहपृष्ठ" data-en="Home">गृहपृष्ठ</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="news.html" data-ne="समाचार" data-en="News">समाचार</a>
+            <i class="fas fa-chevron-right"></i>
+            <span id="breadcrumbCategory">...</span>
+        </nav>
+
+        <!-- Article Header -->
+        <header class="article-header">
+            <h1 class="article-title" id="articleTitle">Loading...</h1>
+            <div class="article-meta">
+                <span class="category-badge" id="articleCategory"></span>
+                <span><i class="fas fa-calendar"></i> <span id="articleDate"></span></span>
+                <span><i class="fas fa-eye"></i> <span id="articleViews"></span> <span data-ne="पटक हेरिएको"
+                        data-en="views">views</span></span>
+            </div>
+        </header>
+
+        <!-- Image Gallery -->
+        <div class="image-gallery" id="imageGallery">
+            <div class="main-image-container" onclick="openLightbox(0)">
+                <img id="mainImage" class="main-image" src="" alt="Article Image">
+                <div class="image-counter" id="imageCounter" style="display: none;">
+                    <i class="fas fa-images"></i> <span id="currentImageNum">1</span> / <span id="totalImages">1</span>
+                </div>
+            </div>
+            <div class="thumbnail-strip" id="thumbnailStrip"></div>
+        </div>
+
+        <!-- Article Content -->
+        <article class="article-content" id="articleContent">
+            <p>Loading article content...</p>
+        </article>
+
+        <!-- Social Share -->
+        <div class="share-section">
+            <h3 data-ne="यो समाचार साझा गर्नुहोस्" data-en="Share this article">यो समाचार साझा गर्नुहोस्</h3>
+            <div class="share-buttons">
+                <button class="share-btn share-facebook" onclick="shareOnFacebook()">
+                    <i class="fab fa-facebook-f"></i>
+                    <span data-ne="फेसबुकमा साझा गर्नुहोस्" data-en="Share on Facebook">Facebook</span>
+                </button>
+                <button class="share-btn share-twitter" onclick="shareOnTwitter()">
+                    <i class="fab fa-twitter"></i>
+                    <span data-ne="ट्विटरमा साझा गर्नुहोस्" data-en="Share on Twitter">Twitter</span>
+                </button>
+                <button class="share-btn share-whatsapp" onclick="shareOnWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-ne="व्हाट्सएपमा साझा गर्नुहोस्" data-en="Share on WhatsApp">WhatsApp</span>
+                </button>
+                <button class="share-btn share-copy" onclick="copyLink()">
+                    <i class="fas fa-link"></i>
+                    <span data-ne="लिंक प्रतिलिपि गर्नुहोस्" data-en="Copy Link">Copy Link</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Related News -->
+        <section class="related-news">
+            <h3 data-ne="सम्बन्धित समाचार" data-en="Related News">सम्बन्धित समाचार</h3>
+            <div class="related-grid" id="relatedNews"></div>
+        </section>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <img class="lightbox-content" id="lightboxImage" src="" alt="Lightbox Image">
+        <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-ne="दिव्य न्यूज" data-en="DIVYA NEWS">दिव्य न्यूज</h3>
+                    <p data-ne="सत्यको साथ, जनताको आवाज" data-en="With Truth, Voice of the People">सत्यको साथ, जनताको
+                        आवाज</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-ne="सम्पर्क" data-en="Contact">सम्पर्क</h4>
+                    <p><i class="fas fa-envelope"></i> divyanews010@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +977-9713251903</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Divya News. <span data-ne="सर्वाधिकार सुरक्षित।"
+                        data-en="All rights reserved.">सर्वाधिकार सुरक्षित।</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/nepali-date.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/breaking-news.js"></script>
+    <script src="js/article.js"></script>
+</body>
+
+</html>
