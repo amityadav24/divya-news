@@ -267,6 +267,9 @@
     // Setup hover carousel for news cards with multiple images
     function setupHoverCarousel() {
         document.addEventListener('mouseenter', function (e) {
+            // Check if e.target is an Element before calling closest
+            if (!e.target || typeof e.target.closest !== 'function') return;
+
             const newsCard = e.target.closest('.news-card[data-images]');
             if (!newsCard) return;
 
