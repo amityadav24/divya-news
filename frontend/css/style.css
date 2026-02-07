@@ -506,7 +506,7 @@ button {
 }
 
 .news-card-content {
-  padding: var(--spacing-md);
+  padding: 2rem;
 }
 
 .news-card-content .category-badge {
