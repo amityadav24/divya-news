@@ -27,6 +27,26 @@
         return;
     }
 
+    // Monitor URL changes to reload page when clicking on different articles
+    // This ensures each article loads fresh instead of showing cached content
+    window.addEventListener('popstate', function () {
+        window.location.reload();
+    });
+
+    // Also monitor for URL changes via pushState/replaceState
+    const originalPushState = history.pushState;
+    const originalReplaceState = history.replaceState;
+
+    history.pushState = function () {
+        originalPushState.apply(this, arguments);
+        window.location.reload();
+    };
+
+    history.replaceState = function () {
+        originalReplaceState.apply(this, arguments);
+        window.location.reload();
+    };
+
     // Load article data
     async function loadArticle() {
         try {
