@@ -61,13 +61,22 @@
         document.getElementById('articleCategory').textContent = categoryName;
         document.getElementById('breadcrumbCategory').textContent = categoryName;
 
-        // Set date
+        // Set date using B.S. format
         const date = new Date(articleData.createdAt);
-        document.getElementById('articleDate').textContent = date.toLocaleDateString(currentLang === 'ne' ? 'ne-NP' : 'en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
+        if (window.NepaliDateConverter) {
+            if (currentLang === 'ne') {
+                document.getElementById('articleDate').textContent = window.NepaliDateConverter.formatBsDateNepali(date);
+            } else {
+                document.getElementById('articleDate').textContent = window.NepaliDateConverter.formatBsDateEnglish(date);
+            }
+        } else {
+            // Fallback to A.D. if converter not loaded
+            document.getElementById('articleDate').textContent = date.toLocaleDateString(currentLang === 'ne' ? 'ne-NP' : 'en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
 
         // Set views
         document.getElementById('articleViews').textContent = articleData.views || 0;
@@ -220,16 +229,18 @@
         relatedGrid.innerHTML = news.map(item => {
             const image = item.images && item.images.length > 0 ? item.images[0] : item.image;
             const title = item.title[currentLang];
+            const description = item.description[currentLang];
             const category = categoryTranslations[item.category][currentLang];
 
             return `
                 <a href="article.html?id=${item._id}" class="news-card">
-                    <div class="news-image">
-                        <img src="${image}" alt="${title}">
+                    <div class="news-card-image">
+                        <img src="${image}" alt="${title}" loading="lazy">
                         <span class="category-badge">${category}</span>
                     </div>
-                    <div class="news-content">
+                    <div class="news-card-content">
                         <h3>${title}</h3>
+                        <p>${description.substring(0, 100)}...</p>
                     </div>
                 </a>
             `;
