@@ -504,6 +504,10 @@
         // Alert functions
         function showAlert(message, type = 'success') {
             const alertBox = document.getElementById('alert');
+            if (!alertBox) {
+                console.error('Alert element not found');
+                return;
+            }
             alertBox.textContent = message;
             alertBox.className = `alert alert-${type} show`;
             setTimeout(() => {
