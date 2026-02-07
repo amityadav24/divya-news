@@ -33,9 +33,9 @@
 
     <style>
         .article-container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0;
         }
 
         .breadcrumb {
@@ -419,73 +419,78 @@
         </div>
     </header>
 
-    <!-- Article Container -->
-    <div class="article-container">
-        <!-- Breadcrumb -->
-        <nav class="breadcrumb" id="breadcrumb">
-            <a href="index.html" data-ne="गृहपृष्ठ" data-en="Home">गृहपृष्ठ</a>
-            <i class="fas fa-chevron-right"></i>
-            <a href="news.html" data-ne="समाचार" data-en="News">समाचार</a>
-            <i class="fas fa-chevron-right"></i>
-            <span id="breadcrumbCategory">...</span>
-        </nav>
+    <!-- Article Section with White Background (matching news page) -->
+    <section class="section" style="background: var(--white); padding-top: 2rem;">
+        <div class="container">
+            <div class="article-container">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb" id="breadcrumb">
+                    <a href="index.html" data-ne="गृहपृष्ठ" data-en="Home">गृहपृष्ठ</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="news.html" data-ne="समाचार" data-en="News">समाचार</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span id="breadcrumbCategory">...</span>
+                </nav>
 
-        <!-- Article Header -->
-        <header class="article-header">
-            <h1 class="article-title" id="articleTitle">Loading...</h1>
-            <div class="article-meta">
-                <span class="category-badge" id="articleCategory"></span>
-                <span><i class="fas fa-calendar"></i> <span id="articleDate"></span></span>
-                <span><i class="fas fa-eye"></i> <span id="articleViews"></span> <span data-ne="पटक हेरिएको"
-                        data-en="views">views</span></span>
-            </div>
-        </header>
+                <!-- Article Header -->
+                <header class="article-header">
+                    <h1 class="article-title" id="articleTitle">Loading...</h1>
+                    <div class="article-meta">
+                        <span class="category-badge" id="articleCategory"></span>
+                        <span><i class="fas fa-calendar"></i> <span id="articleDate"></span></span>
+                        <span><i class="fas fa-eye"></i> <span id="articleViews"></span> <span data-ne="पटक हेरिएको"
+                                data-en="views">views</span></span>
+                    </div>
+                </header>
 
-        <!-- Image Gallery -->
-        <div class="image-gallery" id="imageGallery">
-            <div class="main-image-container" onclick="openLightbox(0)">
-                <img id="mainImage" class="main-image" src="" alt="Article Image">
-                <div class="image-counter" id="imageCounter" style="display: none;">
-                    <i class="fas fa-images"></i> <span id="currentImageNum">1</span> / <span id="totalImages">1</span>
+                <!-- Image Gallery -->
+                <div class="image-gallery" id="imageGallery">
+                    <div class="main-image-container" onclick="openLightbox(0)">
+                        <img id="mainImage" class="main-image" src="" alt="Article Image">
+                        <div class="image-counter" id="imageCounter" style="display: none;">
+                            <i class="fas fa-images"></i> <span id="currentImageNum">1</span> / <span
+                                id="totalImages">1</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-strip" id="thumbnailStrip"></div>
                 </div>
+
+                <!-- Article Content -->
+                <article class="article-content" id="articleContent">
+                    <p>Loading article content...</p>
+                </article>
+
+                <!-- Social Share -->
+                <div class="share-section">
+                    <h3 data-ne="यो समाचार साझा गर्नुहोस्" data-en="Share this article">यो समाचार साझा गर्नुहोस्</h3>
+                    <div class="share-buttons">
+                        <button class="share-btn share-facebook" onclick="shareOnFacebook()">
+                            <i class="fab fa-facebook-f"></i>
+                            <span data-ne="फेसबुकमा साझा गर्नुहोस्" data-en="Share on Facebook">Facebook</span>
+                        </button>
+                        <button class="share-btn share-twitter" onclick="shareOnTwitter()">
+                            <i class="fab fa-twitter"></i>
+                            <span data-ne="ट्विटरमा साझा गर्नुहोस्" data-en="Share on Twitter">Twitter</span>
+                        </button>
+                        <button class="share-btn share-whatsapp" onclick="shareOnWhatsApp()">
+                            <i class="fab fa-whatsapp"></i>
+                            <span data-ne="व्हाट्सएपमा साझा गर्नुहोस्" data-en="Share on WhatsApp">WhatsApp</span>
+                        </button>
+                        <button class="share-btn share-copy" onclick="copyLink()">
+                            <i class="fas fa-link"></i>
+                            <span data-ne="लिंक प्रतिलिपि गर्नुहोस्" data-en="Copy Link">Copy Link</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Related News -->
+                <section class="related-news">
+                    <h3 data-ne="सम्बन्धित समाचार" data-en="Related News">सम्बन्धित समाचार</h3>
+                    <div class="related-grid" id="relatedNews"></div>
+                </section>
             </div>
-            <div class="thumbnail-strip" id="thumbnailStrip"></div>
         </div>
-
-        <!-- Article Content -->
-        <article class="article-content" id="articleContent">
-            <p>Loading article content...</p>
-        </article>
-
-        <!-- Social Share -->
-        <div class="share-section">
-            <h3 data-ne="यो समाचार साझा गर्नुहोस्" data-en="Share this article">यो समाचार साझा गर्नुहोस्</h3>
-            <div class="share-buttons">
-                <button class="share-btn share-facebook" onclick="shareOnFacebook()">
-                    <i class="fab fa-facebook-f"></i>
-                    <span data-ne="फेसबुकमा साझा गर्नुहोस्" data-en="Share on Facebook">Facebook</span>
-                </button>
-                <button class="share-btn share-twitter" onclick="shareOnTwitter()">
-                    <i class="fab fa-twitter"></i>
-                    <span data-ne="ट्विटरमा साझा गर्नुहोस्" data-en="Share on Twitter">Twitter</span>
-                </button>
-                <button class="share-btn share-whatsapp" onclick="shareOnWhatsApp()">
-                    <i class="fab fa-whatsapp"></i>
-                    <span data-ne="व्हाट्सएपमा साझा गर्नुहोस्" data-en="Share on WhatsApp">WhatsApp</span>
-                </button>
-                <button class="share-btn share-copy" onclick="copyLink()">
-                    <i class="fas fa-link"></i>
-                    <span data-ne="लिंक प्रतिलिपि गर्नुहोस्" data-en="Copy Link">Copy Link</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Related News -->
-        <section class="related-news">
-            <h3 data-ne="सम्बन्धित समाचार" data-en="Related News">सम्बन्धित समाचार</h3>
-            <div class="related-grid" id="relatedNews"></div>
-        </section>
-    </div>
+    </section>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
