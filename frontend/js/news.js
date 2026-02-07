@@ -141,19 +141,23 @@
         const title = news.title[currentLang];
         const description = news.description[currentLang];
         const category = categoryTranslations[news.category][currentLang];
-        const date = formatDate(news); // Pass entire news object
+        const date = formatDate(news);
 
         return `
-            <img src="${news.image}" alt="${title}">
-            <div class="featured-overlay">
-                <span class="category-badge">${category}</span>
-                <h2>${title}</h2>
-                <p>${description.substring(0, 200)}...</p>
-                <div class="news-meta">
-                    <span><i class="fas fa-clock"></i> ${date}</span>
-                    <span><i class="fas fa-eye"></i> ${news.views || Math.floor(Math.random() * 5000) + 1000}</span>
+            <a href="article.html?id=${news._id}" class="featured-news-link" style="text-decoration: none; color: inherit; display: block;">
+                <div class="featured-news-image">
+                    <img src="${news.image}" alt="${title}" loading="lazy">
+                    <div class="featured-overlay">
+                        <span class="category-badge">${category}</span>
+                        <h2>${title}</h2>
+                        <p>${description.substring(0, 200)}...</p>
+                        <div class="news-meta">
+                            <span><i class="fas fa-calendar"></i> ${date}</span>
+                            <span><i class="fas fa-eye"></i> ${news.views || 0}</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </a>
         `;
     }
 

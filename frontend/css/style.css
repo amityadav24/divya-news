@@ -66,6 +66,7 @@ body {
   background-color: var(--off-white);
   overflow-x: hidden;
   animation: fadeIn 0.5s ease-in;
+  margin: 0 10px;
 }
 
 @keyframes fadeIn {
@@ -506,20 +507,23 @@ button {
 }
 
 .news-card-content {
-  padding: 1.5rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .news-card-content .category-badge {
   font-size: 0.7rem;
   padding: 0.3rem 0.8rem;
-  margin-bottom: 0.75rem;
   display: inline-block;
+  align-self: flex-start;
 }
 
 .news-card-content h3 {
   font-size: 1.125rem;
   font-weight: 600;
-  margin: 0 0 0.75rem 0;
+  margin: 0;
   line-height: 1.4;
   color: var(--dark-gray);
 }
@@ -527,14 +531,17 @@ button {
 .news-card-content p {
   font-size: 0.875rem;
   color: var(--medium-gray);
-  margin-bottom: 1rem;
+  margin: 0;
   line-height: 1.6;
+  flex-grow: 1;
 }
 
 .news-card-content .news-meta {
   font-size: 0.75rem;
   color: var(--medium-gray);
-  margin-top: auto;
+  margin: 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-color);
 }
 
 /* Small News Card */
