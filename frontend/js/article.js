@@ -249,15 +249,16 @@
 
             return `
                 <a href="article.html?id=${item._id}" class="news-card">
-                    <div class="news-card-image">
+                    <div class="news-image">
                         <img src="${image}" alt="${title}" loading="lazy" class="news-card-main-image">
                         <span class="category-badge">${category}</span>
                     </div>
-                    <div class="news-card-content">
+                    <div class="news-content">
                         <h3>${title}</h3>
-                        <p>${description.substring(0, 120)}...</p>
+                        <p>${description.substring(0, 150)}...</p>
                         <div class="news-meta">
-                            <span><i class="far fa-calendar"></i> ${formattedDate}</span>
+                            <span><i class="fas fa-clock"></i> ${formattedDate}</span>
+                            <span><i class="fas fa-eye"></i> ${item.views || 0}</span>
                         </div>
                     </div>
                 </a>
