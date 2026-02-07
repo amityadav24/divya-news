@@ -506,18 +506,20 @@ button {
 }
 
 .news-card-content {
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .news-card-content .category-badge {
   font-size: 0.7rem;
   padding: 0.3rem 0.8rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
 }
 
 .news-card-content h3 {
   font-size: 1.125rem;
   font-weight: 600;
-  margin: var(--spacing-sm) 0;
+  margin: 0 0 0.75rem 0;
   line-height: 1.4;
   color: var(--dark-gray);
 }
@@ -525,13 +527,14 @@ button {
 .news-card-content p {
   font-size: 0.875rem;
   color: var(--medium-gray);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 1rem;
   line-height: 1.6;
 }
 
 .news-card-content .news-meta {
   font-size: 0.75rem;
   color: var(--medium-gray);
+  margin-top: auto;
 }
 
 /* Small News Card */
