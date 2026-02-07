@@ -639,7 +639,10 @@
                 document.getElementById('newsForm').reset();
                 selectedFiles = [];
                 document.getElementById('imagePreviewGrid').innerHTML = '';
-                document.getElementById('imagePreview').classList.remove('show');
+                const imagePreview = document.getElementById('imagePreview');
+                if (imagePreview) {
+                    imagePreview.classList.remove('show');
+                }
 
             } catch (error) {
                 console.error('Error:', error);
