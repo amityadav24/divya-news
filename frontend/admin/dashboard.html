@@ -396,13 +396,13 @@
                     <div class="form-group full-width">
                         <label>Image Upload Method *</label>
                         <div class="upload-options">
-                            <div class="upload-tab active" onclick="switchUploadTab('file')">
+                            <div class="upload-tab active" onclick="switchUploadTab('file', event)">
                                 <i class="fas fa-upload"></i> File Upload
                             </div>
-                            <div class="upload-tab" onclick="switchUploadTab('url')">
+                            <div class="upload-tab" onclick="switchUploadTab('url', event)">
                                 <i class="fas fa-link"></i> Image URL
                             </div>
-                            <div class="upload-tab" onclick="switchUploadTab('cloudinary')">
+                            <div class="upload-tab" onclick="switchUploadTab('cloudinary', event)">
                                 <i class="fas fa-cloud"></i> Cloudinary URL
                             </div>
                         </div>
@@ -489,16 +489,24 @@
         }
 
         // Switch upload tab
-        function switchUploadTab(method) {
+        function switchUploadTab(method, event) {
             currentUploadMethod = method;
 
             // Update tabs
             document.querySelectorAll('.upload-tab').forEach(tab => tab.classList.remove('active'));
-            event.target.closest('.upload-tab').classList.add('active');
+            if (event && event.target) {
+                const targetTab = event.target.closest('.upload-tab');
+                if (targetTab) {
+                    targetTab.classList.add('active');
+                }
+            }
 
             // Update content
             document.querySelectorAll('.upload-content').forEach(content => content.classList.remove('active'));
-            document.getElementById(`upload-${method}`).classList.add('active');
+            const targetContent = document.getElementById(`upload-${method}`);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
         }
 
         // Alert functions
