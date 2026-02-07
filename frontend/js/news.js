@@ -102,12 +102,16 @@
         const title = news.title[currentLang];
         const description = news.description[currentLang];
         const category = categoryTranslations[news.category][currentLang];
-        const date = formatDate(news); // Pass entire news object
+        const date = formatDate(news);
+
+        // Handle multiple images
+        const images = Array.isArray(news.images) && news.images.length > 0 ? news.images : [news.image];
+        const hasMultipleImages = images.length > 1;
 
         if (isSmall) {
             return `
                 <div class="news-card-small">
-                    <img src="${news.image}" alt="${title}" loading="lazy">
+                    <img src="${images[0]}" alt="${title}" loading="lazy">
                     <div class="news-card-small-content">
                         <h4>${title}</h4>
                         <div class="news-meta">
@@ -119,10 +123,15 @@
         }
 
         return `
-            <a href="article.html?id=${news._id}" class="news-card">
+            <a href="article.html?id=${news._id}" class="news-card" ${hasMultipleImages ? `data-images='${JSON.stringify(images)}'` : ''}>
                 <div class="news-image">
-                    <img src="${news.image}" alt="${title}" loading="lazy">
+                    <img src="${images[0]}" alt="${title}" loading="lazy" class="news-card-main-image">
                     <span class="category-badge">${category}</span>
+                    ${hasMultipleImages ? `
+                        <div class="carousel-indicators">
+                            ${images.map((_, index) => `<span class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></span>`).join('')}
+                        </div>
+                    ` : ''}
                 </div>
                 <div class="news-content">
                     <h3>${title}</h3>
@@ -255,9 +264,49 @@
         }
     });
 
+    // Setup hover carousel for news cards with multiple images
+    function setupHoverCarousel() {
+        document.addEventListener('mouseenter', function (e) {
+            const newsCard = e.target.closest('.news-card[data-images]');
+            if (!newsCard) return;
+
+            const images = JSON.parse(newsCard.getAttribute('data-images'));
+            if (images.length <= 1) return;
+
+            const imgElement = newsCard.querySelector('.news-card-main-image');
+            const dots = newsCard.querySelectorAll('.carousel-dot');
+            let currentIndex = 0;
+            let interval;
+
+            // Start auto-cycling images
+            interval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                imgElement.src = images[currentIndex];
+
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }, 1500); // Change image every 1.5 seconds
+
+            // Stop on mouse leave
+            newsCard.addEventListener('mouseleave', function () {
+                clearInterval(interval);
+                // Reset to first image
+                currentIndex = 0;
+                imgElement.src = images[0];
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === 0);
+                });
+            }, { once: true });
+
+        }, true);
+    }
+
     // Initialize
     function init() {
         setupCategoryFilters();
+        setupHoverCarousel();
         loadNews(); // Handles URL params after data loads
     }
 
