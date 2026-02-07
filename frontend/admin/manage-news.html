@@ -521,12 +521,18 @@
         // Delete modal functions
         function openDeleteModal(newsId) {
             deleteNewsId = newsId;
-            document.getElementById('deleteModal').classList.add('active');
+            const modal = document.getElementById('deleteModal');
+            if (modal) {
+                modal.classList.add('active');
+            }
         }
 
         function closeDeleteModal() {
             deleteNewsId = null;
-            document.getElementById('deleteModal').classList.remove('active');
+            const modal = document.getElementById('deleteModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
         }
 
         async function confirmDelete() {

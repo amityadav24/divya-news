@@ -249,6 +249,8 @@
         const btnLoading = document.getElementById('btnLoading');
 
         function showAlert(message, type = 'error') {
+            const alertBox = document.getElementById('alert');
+            if (!alertBox) return;
             alertBox.textContent = message;
             alertBox.className = `alert alert-${type} show`;
             setTimeout(() => {
