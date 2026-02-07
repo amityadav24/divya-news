@@ -77,6 +77,59 @@ router.post('/image', auth, upload.single('image'), async (req, res) => {
 });
 
 /**
+ * @route   POST /api/upload/images
+ * @desc    Upload multiple images to Cloudinary
+ * @access  Private (Admin only)
+ */
+router.post('/images', auth, upload.array('images', 10), async (req, res) => {
+    try {
+        if (!req.files || req.files.length === 0) {
+            return res.status(400).json({ message: 'No files uploaded' });
+        }
+
+        // Upload all images to Cloudinary
+        const uploadPromises = req.files.map(file => {
+            return new Promise((resolve, reject) => {
+                const uploadStream = cloudinary.uploader.upload_stream(
+                    {
+                        folder: 'divya-news/images',
+                        resource_type: 'image',
+                        transformation: [
+                            { width: 1200, height: 800, crop: 'limit' },
+                            { quality: 'auto:good' },
+                            { fetch_format: 'auto' }
+                        ]
+                    },
+                    (error, result) => {
+                        if (error) reject(error);
+                        else resolve(result);
+                    }
+                );
+
+                uploadStream.end(file.buffer);
+            });
+        });
+
+        const results = await Promise.all(uploadPromises);
+
+        const urls = results.map(result => result.secure_url);
+
+        res.json({
+            message: `${urls.length} image(s) uploaded successfully`,
+            urls: urls,
+            count: urls.length
+        });
+
+    } catch (error) {
+        console.error('Multiple images upload error:', error);
+        res.status(500).json({
+            message: 'Failed to upload images',
+            error: process.env.NODE_ENV === 'development' ? error.message : undefined
+        });
+    }
+});
+
+/**
  * @route   POST /api/upload/video
  * @desc    Upload video to Cloudinary
  * @access  Private (Admin only)

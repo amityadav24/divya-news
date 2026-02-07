@@ -100,8 +100,7 @@ router.post('/', [
     body('title.en').trim().notEmpty().withMessage('English title is required'),
     body('description.ne').trim().notEmpty().withMessage('Nepali description is required'),
     body('description.en').trim().notEmpty().withMessage('English description is required'),
-    body('category').isIn(['politics', 'society', 'business', 'sports', 'technology']).withMessage('Invalid category'),
-    body('image').trim().notEmpty().withMessage('Image is required')
+    body('category').isIn(['politics', 'society', 'business', 'sports', 'technology']).withMessage('Invalid category')
 ], async (req, res) => {
     try {
         // Validate input
@@ -110,9 +109,19 @@ router.post('/', [
             return res.status(400).json({ errors: errors.array() });
         }
 
+        // Ensure at least one image
+        if (!req.body.images || req.body.images.length === 0) {
+            if (!req.body.image) {
+                return res.status(400).json({ message: 'At least one image is required' });
+            }
+            // Convert single image to array for backward compatibility
+            req.body.images = [req.body.image];
+        }
+
         const newsData = {
             ...req.body,
-            author: req.admin._id
+            author: req.admin._id,
+            image: req.body.images[0] // Set first image as main image for backward compatibility
         };
 
         const news = new News(newsData);

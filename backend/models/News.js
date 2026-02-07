@@ -32,9 +32,13 @@ const newsSchema = new mongoose.Schema({
         },
         lowercase: true
     },
+    images: [{
+        type: String,
+        trim: true
+    }],
     image: {
         type: String,
-        required: [true, 'Image is required']
+        trim: true
     },
     video: {
         type: String,
