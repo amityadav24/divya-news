@@ -488,11 +488,24 @@ button {
   opacity: 1;
 }
 
+.news-image,
+.news-card-image {
+  position: relative;
+  height: 200px !important;
+  min-height: 200px !important;
+  max-height: 200px !important;
+  overflow: hidden;
+}
+
 .news-image img,
 .news-card-image img {
   width: 100%;
-  height: 100%;
+  height: 200px !important;
+  min-height: 200px !important;
+  max-height: 200px !important;
   object-fit: cover;
+  object-position: center;
+  display: block;
   transition: var(--transition-slow);
 }
 
