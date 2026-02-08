@@ -272,7 +272,10 @@
 
         const title = articleData.title[currentLang];
         const description = articleData.description[currentLang].substring(0, 200);
-        const image = images[0];
+        // Fix: Use articleData.images directly instead of images variable
+        const image = articleData.images && articleData.images.length > 0
+            ? articleData.images[0]
+            : articleData.image;
         const url = window.location.href;
 
         // Update document title
@@ -304,6 +307,9 @@
 
         const twitterImage = document.querySelector('meta[name="twitter:image"]');
         if (twitterImage) twitterImage.content = image;
+
+        // Debug: Log to console to verify
+        console.log('Meta tags updated:', { title, description, image, url });
     }
 
     // Listen for language changes
