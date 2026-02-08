@@ -182,7 +182,7 @@
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
     };
 
-    window.shareOnTwitter = function () {
+    window.shareOnX = function () {
         const url = encodeURIComponent(window.location.href);
         const text = encodeURIComponent(articleData.title[currentLang]);
         window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
@@ -271,16 +271,39 @@
         if (!articleData) return;
 
         const title = articleData.title[currentLang];
-        const description = articleData.description[currentLang].substring(0, 160);
+        const description = articleData.description[currentLang].substring(0, 200);
         const image = images[0];
         const url = window.location.href;
 
+        // Update document title
+        document.title = `${title} - Divya News`;
+
+        // Update meta description
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.content = description;
+
         // Update Open Graph tags
-        document.querySelector('meta[property="og:title"]').content = title;
-        document.querySelector('meta[property="og:description"]').content = description;
-        document.querySelector('meta[property="og:image"]').content = image;
-        document.querySelector('meta[property="og:url"]').content = url;
-        document.querySelector('meta[name="description"]').content = description;
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.content = title;
+
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.content = description;
+
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        if (ogImage) ogImage.content = image;
+
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) ogUrl.content = url;
+
+        // Update Twitter Card tags
+        const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twitterTitle) twitterTitle.content = title;
+
+        const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twitterDesc) twitterDesc.content = description;
+
+        const twitterImage = document.querySelector('meta[name="twitter:image"]');
+        if (twitterImage) twitterImage.content = image;
     }
 
     // Listen for language changes
