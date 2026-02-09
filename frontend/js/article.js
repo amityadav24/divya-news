@@ -216,7 +216,11 @@
     };
 
     window.shareMore = function () {
-        const url = window.location.href;
+        // Get article ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+        // Construct server-side rendered URL for proper Open Graph tags
+        const shareUrl = `${window.location.origin}/article/${articleId}`;
         const title = articleData.title[currentLang];
         const text = articleData.description[currentLang].substring(0, 100);
 
@@ -225,17 +229,17 @@
             navigator.share({
                 title: title,
                 text: text,
-                url: url
+                url: shareUrl
             }).catch((error) => {
                 console.log('Error sharing:', error);
             });
         } else {
             // Fallback: copy link to clipboard
-            navigator.clipboard.writeText(url).then(() => {
+            navigator.clipboard.writeText(shareUrl).then(() => {
                 alert(currentLang === 'ne' ? 'लिंक प्रतिलिपि गरियो!' : 'Link copied to clipboard!');
             }).catch(() => {
                 // If clipboard API fails, show the URL in a prompt
-                prompt(currentLang === 'ne' ? 'यो लिंक प्रतिलिपि गर्नुहोस्:' : 'Copy this link:', url);
+                prompt(currentLang === 'ne' ? 'यो लिंक प्रतिलिपि गर्नुहोस्:' : 'Copy this link:', shareUrl);
             });
         }
     };
