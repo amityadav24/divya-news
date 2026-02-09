@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Serve article page with dynamic Open Graph meta tags
-router.get(['/:id', '/.html'], async (req, res) => { // Modified route path to handle both /article/:id and /article.html
+router.get(['/:id', '/.html'], async (req, res) => {
     try {
         // Get article ID from params or query
         let articleId = req.params.id;
@@ -19,6 +19,15 @@ router.get(['/:id', '/.html'], async (req, res) => { // Modified route path to h
 
         if (!articleId) {
             return res.status(400).send('Article ID is required');
+        }
+
+        // REDIRECT: If accessed via /article.html?id=xxx, redirect to /article/xxx
+        // This ensures consistent URLs and helps with Facebook caching
+        if (req.path.includes('.html') || req.query.id) {
+            const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+            const host = req.headers['x-forwarded-host'] || req.get('host');
+            const redirectUrl = `${protocol}://${host}/article/${articleId}`;
+            return res.redirect(301, redirectUrl);
         }
 
         const article = await News.findById(articleId);
