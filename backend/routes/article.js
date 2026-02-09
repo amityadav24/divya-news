@@ -4,21 +4,6 @@ const News = require('../models/News');
 const fs = require('fs');
 const path = require('path');
 
-// Handle /article.html?id=xxx - redirect to /article/:id
-router.get('/.html', async (req, res) => {
-    const articleId = req.query.id;
-
-    if (!articleId) {
-        return res.status(400).send('Article ID is required');
-    }
-
-    // Redirect to clean URL format
-    const protocol = req.headers['x-forwarded-proto'] || req.protocol;
-    const host = req.headers['x-forwarded-host'] || req.get('host');
-    const redirectUrl = `${protocol}://${host}/article/${articleId}`;
-    return res.redirect(301, redirectUrl);
-});
-
 // Serve article page with dynamic Open Graph meta tags for /article/:id
 router.get('/:id', async (req, res) => {
     try {

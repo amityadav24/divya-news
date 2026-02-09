@@ -16,10 +16,6 @@
             "destination": "/backend/server.js"
         },
         {
-            "source": "/article.html",
-            "destination": "/backend/server.js"
-        },
-        {
             "source": "/article/:id",
             "destination": "/backend/server.js"
         },
