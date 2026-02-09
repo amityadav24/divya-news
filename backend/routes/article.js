@@ -46,6 +46,11 @@ router.get(['/:id', '/.html'], async (req, res) => { // Modified route path to h
             ? image
             : `${protocol}://${host}${image.startsWith('/') ? '' : '/'}${image}`;
 
+        // Add cache-busting parameter to force Facebook to refresh the image
+        const cacheBustingImageUrl = imageUrl.includes('?')
+            ? `${imageUrl}&v=${Date.now()}`
+            : `${imageUrl}?v=${Date.now()}`;
+
         // Replace meta tags with article-specific data
         html = html.replace(
             /<meta property="og:title" content="[^"]*">/,
@@ -57,7 +62,7 @@ router.get(['/:id', '/.html'], async (req, res) => { // Modified route path to h
         );
         html = html.replace(
             /<meta property="og:image" content="[^"]*">/,
-            `<meta property="og:image" content="${imageUrl || ''}">`
+            `<meta property="og:image" content="${cacheBustingImageUrl || ''}">`
         );
         html = html.replace(
             /<meta property="og:url" content="[^"]*">/,
@@ -73,7 +78,7 @@ router.get(['/:id', '/.html'], async (req, res) => { // Modified route path to h
         );
         html = html.replace(
             /<meta name="twitter:image" content="[^"]*">/,
-            `<meta name="twitter:image" content="${imageUrl || ''}">`
+            `<meta name="twitter:image" content="${cacheBustingImageUrl || ''}">`
         );
         html = html.replace(
             /<meta name="description" content="[^"]*">/,

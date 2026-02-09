@@ -189,9 +189,21 @@
     };
 
     window.shareOnWhatsApp = function () {
-        const url = encodeURIComponent(window.location.href);
-        const text = encodeURIComponent(articleData.title[currentLang]);
-        window.open(`https://wa.me/?text=${text} ${url}`, '_blank');
+        const url = window.location.href;
+        const title = articleData.title[currentLang];
+        const message = `${title}\n\n${url}`;
+        const encodedMessage = encodeURIComponent(message);
+
+        // Check if mobile device
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        if (isMobile) {
+            // On mobile, use whatsapp:// protocol
+            window.location.href = `whatsapp://send?text=${encodedMessage}`;
+        } else {
+            // On desktop, use web.whatsapp.com
+            window.open(`https://web.whatsapp.com/send?text=${encodedMessage}`, '_blank');
+        }
     };
 
     window.shareMore = function () {
