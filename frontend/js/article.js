@@ -178,8 +178,13 @@
 
     // Social sharing functions
     window.shareOnFacebook = function () {
-        const url = encodeURIComponent(window.location.href);
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        // Get article ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+        // Construct server-side rendered URL for proper Open Graph tags
+        const shareUrl = `${window.location.origin}/article/${articleId}`;
+        const encodedUrl = encodeURIComponent(shareUrl);
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, '_blank');
     };
 
     window.shareOnX = function () {
@@ -189,9 +194,13 @@
     };
 
     window.shareOnWhatsApp = function () {
-        const url = window.location.href;
+        // Get article ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+        // Construct server-side rendered URL for proper Open Graph tags
+        const shareUrl = `${window.location.origin}/article/${articleId}`;
         const title = articleData.title[currentLang];
-        const message = `${title}\n\n${url}`;
+        const message = `${title}\n\n${shareUrl}`;
         const encodedMessage = encodeURIComponent(message);
 
         // Check if mobile device
