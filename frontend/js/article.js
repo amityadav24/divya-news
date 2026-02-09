@@ -221,8 +221,16 @@
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
         if (isMobile) {
-            // On mobile, use whatsapp:// protocol
-            window.location.href = `whatsapp://send?text=${encodedMessage}`;
+            // On mobile, give user choice between app and web
+            const useApp = confirm(currentLang === 'ne'
+                ? 'WhatsApp एप खोल्नुहोस्? (Cancel गर्नुहोस् वेब संस्करणको लागि)'
+                : 'Open WhatsApp app? (Cancel for web version)');
+
+            if (useApp) {
+                window.location.href = `whatsapp://send?text=${encodedMessage}`;
+            } else {
+                window.open(`https://web.whatsapp.com/send?text=${encodedMessage}`, '_blank');
+            }
         } else {
             // On desktop, use web.whatsapp.com
             window.open(`https://web.whatsapp.com/send?text=${encodedMessage}`, '_blank');
