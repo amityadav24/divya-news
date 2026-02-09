@@ -194,10 +194,29 @@
         window.open(`https://wa.me/?text=${text} ${url}`, '_blank');
     };
 
-    window.copyLink = function () {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            alert(currentLang === 'ne' ? 'लिंक प्रतिलिपि गरियो!' : 'Link copied!');
-        });
+    window.shareMore = function () {
+        const url = window.location.href;
+        const title = articleData.title[currentLang];
+        const text = articleData.description[currentLang].substring(0, 100);
+
+        // Check if Web Share API is available (mobile browsers)
+        if (navigator.share) {
+            navigator.share({
+                title: title,
+                text: text,
+                url: url
+            }).catch((error) => {
+                console.log('Error sharing:', error);
+            });
+        } else {
+            // Fallback: copy link to clipboard
+            navigator.clipboard.writeText(url).then(() => {
+                alert(currentLang === 'ne' ? 'लिंक प्रतिलिपि गरियो!' : 'Link copied to clipboard!');
+            }).catch(() => {
+                // If clipboard API fails, show the URL in a prompt
+                prompt(currentLang === 'ne' ? 'यो लिंक प्रतिलिपि गर्नुहोस्:' : 'Copy this link:', url);
+            });
+        }
     };
 
     // Load related news
@@ -278,6 +297,11 @@
             : articleData.image;
         const url = window.location.href;
 
+        // Convert relative URL to absolute URL for social media sharing
+        const imageUrl = image.startsWith('http')
+            ? image
+            : `${window.location.origin}${image.startsWith('/') ? '' : '/'}${image}`;
+
         // Update document title
         document.title = `${title} - Divya News`;
 
@@ -293,7 +317,7 @@
         if (ogDesc) ogDesc.content = description;
 
         const ogImage = document.querySelector('meta[property="og:image"]');
-        if (ogImage) ogImage.content = image;
+        if (ogImage) ogImage.content = imageUrl;
 
         const ogUrl = document.querySelector('meta[property="og:url"]');
         if (ogUrl) ogUrl.content = url;
@@ -306,10 +330,10 @@
         if (twitterDesc) twitterDesc.content = description;
 
         const twitterImage = document.querySelector('meta[name="twitter:image"]');
-        if (twitterImage) twitterImage.content = image;
+        if (twitterImage) twitterImage.content = imageUrl;
 
         // Debug: Log to console to verify
-        console.log('Meta tags updated:', { title, description, image, url });
+        console.log('Meta tags updated:', { title, description, image: imageUrl, url });
     }
 
     // Listen for language changes
