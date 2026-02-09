@@ -18,9 +18,23 @@
         technology: { ne: 'प्रविधि', en: 'Technology' }
     };
 
-    // Get article ID from URL
+    // Get article ID from URL - handle both formats:
+    // 1. /article.html?id=xxx (old client-side format)
+    // 2. /article/xxx (new server-side format for sharing)
+    let articleId = null;
+
+    // First, try to get ID from query parameter
     const urlParams = new URLSearchParams(window.location.search);
-    const articleId = urlParams.get('id');
+    articleId = urlParams.get('id');
+
+    // If not found, try to extract from path (for /article/:id format)
+    if (!articleId) {
+        const pathParts = window.location.pathname.split('/');
+        // Check if URL is in format /article/:id
+        if (pathParts.length >= 3 && pathParts[1] === 'article') {
+            articleId = pathParts[2];
+        }
+    }
 
     if (!articleId) {
         window.location.href = 'news.html';
