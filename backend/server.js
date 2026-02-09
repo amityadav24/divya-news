@@ -25,6 +25,9 @@ app.use('/api/news', require('./routes/news'));
 app.use('/api/upload', require('./routes/upload'));
 app.use('/api/breaking-news', require('./routes/breakingNews'));
 
+// Server-side rendered article page for Open Graph meta tags
+app.use('/article', require('./routes/article'));
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({

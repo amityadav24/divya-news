@@ -262,33 +262,12 @@
         .share-section-inline {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 1rem;
             margin: 2rem 0;
             padding: 1.5rem 0;
             border-top: 1px solid #e5e7eb;
             border-bottom: 1px solid #e5e7eb;
-        }
-
-        .share-count {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-right: 1rem;
-            min-width: 60px;
-        }
-
-        .count-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            line-height: 1;
-        }
-
-        .count-label {
-            font-size: 0.75rem;
-            color: #6b7280;
-            text-transform: uppercase;
-            margin-top: 0.25rem;
         }
 
         .share-icons {
@@ -329,7 +308,12 @@
         }
 
         .share-icon.twitter:hover {
-            background: #1a1a1a;
+            background: #333333;
+        }
+
+        .share-icon.twitter i {
+            color: white;
+            font-weight: 900;
         }
 
         .share-icon.whatsapp {
@@ -398,12 +382,6 @@
             .share-section-inline {
                 flex-wrap: wrap;
                 justify-content: center;
-            }
-
-            .share-count {
-                width: 100%;
-                margin-bottom: 1rem;
-                margin-right: 0;
             }
 
             .share-icons {
@@ -527,10 +505,6 @@
 
                 <!-- Social Share - Inline with circular icons -->
                 <div class="share-section-inline">
-                    <div class="share-count">
-                        <span class="count-number" id="shareCount">0</span>
-                        <span class="count-label" data-ne="Shares" data-en="Shares">Shares</span>
-                    </div>
                     <div class="share-icons">
                         <button class="share-icon facebook" onclick="shareOnFacebook()" aria-label="Share on Facebook">
                             <i class="fab fa-facebook-f"></i>
