@@ -4,30 +4,28 @@ const News = require('../models/News');
 const fs = require('fs');
 const path = require('path');
 
-// Serve article page with dynamic Open Graph meta tags
-router.get(['/:id', '/.html'], async (req, res) => {
+// Handle /article.html?id=xxx - redirect to /article/:id
+router.get('/.html', async (req, res) => {
+    const articleId = req.query.id;
+
+    if (!articleId) {
+        return res.status(400).send('Article ID is required');
+    }
+
+    // Redirect to clean URL format
+    const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+    const host = req.headers['x-forwarded-host'] || req.get('host');
+    const redirectUrl = `${protocol}://${host}/article/${articleId}`;
+    return res.redirect(301, redirectUrl);
+});
+
+// Serve article page with dynamic Open Graph meta tags for /article/:id
+router.get('/:id', async (req, res) => {
     try {
-        // Get article ID from params or query
-        let articleId = req.params.id;
-        if (articleId && articleId.endsWith('.html')) {
-            // If the route is /article.html, then the ID should come from query
-            articleId = req.query.id;
-        } else if (!articleId) {
-            // If no ID in params (e.g., /article.html without :id), check query
-            articleId = req.query.id;
-        }
+        const articleId = req.params.id;
 
         if (!articleId) {
             return res.status(400).send('Article ID is required');
-        }
-
-        // REDIRECT: If accessed via /article.html?id=xxx, redirect to /article/xxx
-        // This ensures consistent URLs and helps with Facebook caching
-        if (req.path.includes('.html') || req.query.id) {
-            const protocol = req.headers['x-forwarded-proto'] || req.protocol;
-            const host = req.headers['x-forwarded-host'] || req.get('host');
-            const redirectUrl = `${protocol}://${host}/article/${articleId}`;
-            return res.redirect(301, redirectUrl);
         }
 
         const article = await News.findById(articleId);
